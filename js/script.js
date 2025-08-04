@@ -4,23 +4,23 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeVideoBackground();
     initializeScrollEffects();
     initializeVideoModal();
-    initializeMobileMenu();
-    initializeCounterAnimation();
 });
 
 // 导航栏滚动效果
 function initializeNavigation() {
-    const nav = document.querySelector('.top-navigation');
+    const nav = document.querySelector('.commonHeader');
     
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        
-        if (scrolled > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
+    if (nav) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            
+            if (scrolled > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    }
 
     // 平滑滚动到锚点
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -44,9 +44,12 @@ function initializeVideoBackground() {
     const mainUI = document.querySelector('.main-ui');
     
     if (video && mainUI) {
-        // 监听视频时间更新，在2.5秒显示文字
+        // 设置初始透明度
+        mainUI.style.opacity = '0';
+        
+        // 监听视频时间更新，在3秒显示文字
         video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= 2.5 && mainUI.style.opacity === '0') {
+            if (video.currentTime >= 3.0 && mainUI.style.opacity === '0') {
                 mainUI.style.opacity = '1';
             }
         });
@@ -88,8 +91,8 @@ function initializeVideoBackground() {
 
         // 如果视频很短，设置最小等待时间
         video.addEventListener('loadedmetadata', () => {
-            if (video.duration < 2.5) {
-                // 如果视频少于2.5秒，等待视频播放完后再显示文字
+            if (video.duration < 3.0) {
+                // 如果视频少于3秒，等待视频播放完后再显示文字
                 setTimeout(() => {
                     if (mainUI.style.opacity === '0') {
                         mainUI.style.opacity = '1';
@@ -163,68 +166,15 @@ function showFallbackImage() {
     mainUI.style.opacity = '1';
 }
 
-// 数字动画计数器
-function initializeCounterAnimation() {
-    const counters = document.querySelectorAll('.stat-number');
-    const observerOptions = {
-        threshold: 0.7
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
-}
-
-function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-count'));
-    const duration = 2000; // 2秒动画
-    const step = target / (duration / 16); // 每16ms更新一次
-    let current = 0;
-
-    const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
-        }
-        
-        // 格式化数字显示
-        if (target >= 1000000) {
-            element.textContent = (current / 1000000).toFixed(1) + 'M+';
-        } else if (target >= 1000) {
-            element.textContent = (current / 1000).toFixed(0) + 'K+';
-        } else {
-            element.textContent = current.toFixed(1);
-        }
-    }, 16);
-}
-
-// 滚动效果和视差（简化版，不影响演示区域）
+// 滚动效果和视差（简化版）
 function initializeScrollEffects() {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         
-        // 滚动指示器淡出
-        if (scrollIndicator) {
-            const opacity = Math.max(1 - scrolled / 300, 0);
-            scrollIndicator.style.opacity = opacity;
-        }
-        
         // 主内容轻微视差效果
-        const heroContent = document.querySelector('.hero-content');
+        const heroContent = document.querySelector('.main-ui');
         if (heroContent && scrolled < window.innerHeight) {
-            heroContent.style.transform = `translateY(${scrolled * 0.1}px)`;
+            heroContent.style.transform = `translateY(${scrolled * 0.05}px)`;
         }
     });
 }
@@ -233,8 +183,8 @@ function initializeScrollEffects() {
 function initializeVideoModal() {
     const modal = document.getElementById('videoModal');
     const videoPlayBtn = document.querySelector('.video-play-btn');
-    const closeBtn = document.querySelector('.modal-close');
-    const demoVideo = document.getElementById('demoVideo');
+    const closeBtn = document.querySelector('.videoClose');
+    const demoVideo = modal ? modal.querySelector('video') : null;
     
     console.log('Video modal elements:', { modal, videoPlayBtn, closeBtn, demoVideo });
     
@@ -246,7 +196,11 @@ function initializeVideoModal() {
             document.body.style.overflow = 'hidden';
             // 延迟播放，确保弹窗完全显示
             setTimeout(() => {
-                demoVideo.play();
+                if (demoVideo) {
+                    demoVideo.play().catch(error => {
+                        console.log('视频播放失败:', error);
+                    });
+                }
             }, 300);
         });
     } else {
@@ -257,8 +211,10 @@ function initializeVideoModal() {
     function closeModal() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
-        demoVideo.pause();
-        demoVideo.currentTime = 0;
+        if (demoVideo) {
+            demoVideo.pause();
+            demoVideo.currentTime = 0;
+        }
     }
     
     if (closeBtn) {
@@ -266,52 +222,22 @@ function initializeVideoModal() {
     }
     
     // 点击背景关闭
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
     
     // ESC键关闭
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
+        if (e.key === 'Escape' && modal && modal.style.display === 'block') {
             closeModal();
         }
     });
 }
 
-// 移动端菜单
-function initializeMobileMenu() {
-    const toggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (toggle && navLinks) {
-        toggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            toggle.classList.toggle('active');
-        });
-        
-        // 点击菜单项后关闭菜单
-        navLinks.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                toggle.classList.remove('active');
-            });
-        });
-    }
-}
-
-// 滚动到功能区域
-function scrollToFeatures() {
-    const featuresSection = document.getElementById('features');
-    if (featuresSection) {
-        const offsetTop = featuresSection.offsetTop - 70;
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
-    }
-}
 
 // 按钮涟漪效果
 function createRippleEffect(event, element) {
@@ -394,29 +320,5 @@ rippleStyle.textContent = `
 `;
 document.head.appendChild(rippleStyle);
 
-// 页面性能优化
-function initializePerformanceOptimizations() {
-    // 图片懒加载
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
 
-// 错误处理
-window.addEventListener('error', (e) => {
-    console.error('页面错误:', e.error);
-    // 可以在这里添加错误上报逻辑
-});
-
-// 初始化性能优化
-document.addEventListener('DOMContentLoaded', initializePerformanceOptimizations);
+// 初始化
