@@ -9,77 +9,75 @@
 </head>
 <body>
     <div class="HomeApp">
-        <!-- 顶部导航 -->
-        <nav class="top-navigation">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <div class="logo"></div>
-                    <div class="brand-text">通义法睿</div>
-                </div>
-                <div class="nav-links">
-                    <a href="#home" class="nav-link">购买方案</a>
-                    <a href="#about" class="nav-link">API接入</a>
-                    <a href="#contact" class="nav-link">帮助中心</a>
-                    <a href="login.html" class="nav-link">登录/注册</a>
-                </div>
-                <!-- 移动端菜单按钮 -->
-                <div class="mobile-menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        <div class="HomeAppBg">
+            <!-- 顶部导航 -->
+            <div class="commonHeader">
+                <div class="commonHeader__container">
+                    <div class="SiteBrand___R6DmL">
+                        <div class="leftMenu___ph6MK">
+                            <div class="leftMenuLogo___YArLG">
+                                <img class="leftMenuLogoImg___W2uMK" src="https://img.alicdn.com/imgextra/i3/O1CN01fhXie81ILFyqwx1Kf_!!6000000000876-55-tps-20-20.svg" alt="logo">
+                            </div>
+                            <img class="leftMenuColumn___XLoF9" src="https://img.alicdn.com/imgextra/i4/O1CN01dP5zcl1JzOJ9jsxfM_!!6000000001099-2-tps-272-64.png" alt="通义">
+                        </div>
+                    </div>
+                    <div class="commonHeader__container__right">
+                        <div class="UserAccount___vc8Yx">
+                            <div style="margin-right: 0px;"></div>
+                            <div style="display: grid; align-items: center; justify-content: center; gap: 0px; grid-auto-flow: column; grid-auto-rows: auto;">
+                                <span class="UserAccount__Link___OsXdv">
+                                    <span class="UserAccount__Link__Text___NYqqn"> 购买方案</span>
+                                </span>
+                                <span class="UserAccount__Link___OsXdv">
+                                    <span class="UserAccount__Link__Text___NYqqn">API接入</span>
+                                </span>
+                                <div style="height: 50px; line-height: 50px;">
+                                    <span class="UserAccount__Link___OsXdv">
+                                        <span class="UserAccount__Link__Text___NYqqn">帮助中心</span>
+                                    </span>
+                                </div>
+                                <div style="height: 50px; line-height: 50px;">
+                                    <span class="UserAccount__Link___OsXdv">
+                                        <span class="UserAccount__Link__Text___NYqqn">登录/注册</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
 
-        <!-- 主背景视频区域 -->
-        <section id="home" class="hero-section">
-            <!-- 上半部分导航栏背景 -->
-            <div class="nav-background"></div>
+            <!-- 主背景视频区域 -->
+            <div class="part-zero">
+                <!-- 导航栏背景区域 -->
+                <div class="nevigation-fake"></div>
             
-            <!-- 下半部分视频背景 -->
-            <div class="hero-background">
-                <video class="background-video" autoplay muted playsinline preload="auto" style="opacity: 1; transition: opacity 0.3s;">
-                    <source src="assets/videos/background.mp4" type="video/mp4">
-                    您的浏览器不支持视频播放
-                </video>
-                <!-- 视频遮罩层 -->
-                <div class="video-overlay"></div>
-            </div>
-            
-            <!-- 主要内容 -->
-            <div class="hero-content" style="opacity: 0; transition: opacity 1s ease-in-out;">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="title-main">通义法睿</span>
-                        <span class="title-divider">/</span>
-                        <span class="title-sub">因智能而简单，让专业更卓越</span>
-                    </h1>
-                    <p class="hero-subtitle">Leading AI Legal Product Powered by Alibaba Cloud</p>
+            <div class="main-ui" style="opacity: 0; transition: opacity 1s ease-in-out;">
+                <div class="top-title">通义法睿 / 因智能而简单，让专业更卓越</div>
+                <div class="top-subtitle">Leading AI Legal Product Powered by Alibaba Cloud</div>
+                <div class="enter_ui">
+                    <div class="enter_button">立即使用</div>
+                    <div class="video_button video-play-btn">
+                        <div class="play_image"></div>
+                    </div>
                 </div>
-                
-                <!-- 操作按钮 -->
-                <div class="hero-actions">
-                    <button class="btn-primary" onclick="scrollToDemo()">
-                        <span>立即使用</span>
-                    </button>
-                    <button class="play-btn video-play-btn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </button>
+            </div>
+                <div class="bg_video" style="transform: none;">
+                    <video autoplay muted playsinline preload="auto" style="opacity: 1; transition: opacity 0.3s;">
+                        <source src="assets/videos/background.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
 
-        </section>
-
-        <!-- 视频弹窗 -->
-        <div id="videoModal" class="video-modal">
-            <div class="modal-content">
-                <span class="modal-close">&times;</span>
-                <video id="demoVideo" controls>
-                    <source src="assets/videos/demo.mp4" type="video/mp4">
-                    您的浏览器不支持视频播放
-                </video>
+            <!-- 视频弹窗 -->
+            <div id="videoModal" class="video-modal">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <video id="demoVideo" controls>
+                        <source src="assets/videos/demo.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                </div>
             </div>
         </div>
     </div>

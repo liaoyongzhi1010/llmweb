@@ -38,16 +38,16 @@ function initializeNavigation() {
     });
 }
 
-// 视频背景初始化（在第三秒显示文字内容）
+// 视频背景初始化（在2.5秒显示文字，播放完成后停留在最后一帧作为背景）
 function initializeVideoBackground() {
-    const video = document.querySelector('.background-video');
-    const heroContent = document.querySelector('.hero-content');
+    const video = document.querySelector('.bg_video video');
+    const mainUI = document.querySelector('.main-ui');
     
-    if (video && heroContent) {
-        // 监听视频时间更新，在第3秒显示文字
+    if (video && mainUI) {
+        // 监听视频时间更新，在2.5秒显示文字
         video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= 3 && heroContent.style.opacity === '0') {
-                heroContent.style.opacity = '1';
+            if (video.currentTime >= 2.5 && mainUI.style.opacity === '0') {
+                mainUI.style.opacity = '1';
             }
         });
         
@@ -58,8 +58,8 @@ function initializeVideoBackground() {
             video.pause(); // 确保视频暂停在最后一帧
             
             // 确保文字内容已显示
-            if (heroContent.style.opacity === '0') {
-                heroContent.style.opacity = '1';
+            if (mainUI.style.opacity === '0') {
+                mainUI.style.opacity = '1';
             }
         });
         
@@ -68,7 +68,7 @@ function initializeVideoBackground() {
             console.log('视频自动播放失败:', error);
             // 如果视频播放失败，直接显示文字内容
             setTimeout(() => {
-                heroContent.style.opacity = '1';
+                mainUI.style.opacity = '1';
             }, 1000);
             showVideoPlayButton();
         });
@@ -82,17 +82,17 @@ function initializeVideoBackground() {
         video.addEventListener('error', (e) => {
             console.log('视频加载错误:', e);
             // 视频出错时直接显示文字内容
-            heroContent.style.opacity = '1';
+            mainUI.style.opacity = '1';
             showFallbackImage();
         });
 
         // 如果视频很短，设置最小等待时间
         video.addEventListener('loadedmetadata', () => {
-            if (video.duration < 3) {
-                // 如果视频少于3秒，等待视频播放完后再显示文字
+            if (video.duration < 2.5) {
+                // 如果视频少于2.5秒，等待视频播放完后再显示文字
                 setTimeout(() => {
-                    if (heroContent.style.opacity === '0') {
-                        heroContent.style.opacity = '1';
+                    if (mainUI.style.opacity === '0') {
+                        mainUI.style.opacity = '1';
                     }
                 }, video.duration * 1000 + 500);
             }
@@ -102,7 +102,7 @@ function initializeVideoBackground() {
 
 // 显示视频播放按钮（移动端可能需要）
 function showVideoPlayButton() {
-    const heroContent = document.querySelector('.hero-content');
+    const mainUI = document.querySelector('.main-ui');
     const playBtn = document.createElement('button');
     playBtn.className = 'video-play-fallback';
     playBtn.innerHTML = '▶ 播放背景视频';
@@ -121,27 +121,27 @@ function showVideoPlayButton() {
     `;
     
     playBtn.addEventListener('click', () => {
-        const video = document.querySelector('.background-video');
+        const video = document.querySelector('.bg_video video');
         video.play().then(() => {
             playBtn.remove();
         });
     });
     
-    document.querySelector('.hero-section').appendChild(playBtn);
+    document.querySelector('.part-zero').appendChild(playBtn);
     
     // 如果用户点击播放按钮，也要显示文字
     playBtn.addEventListener('click', () => {
         setTimeout(() => {
-            heroContent.style.opacity = '1';
+            mainUI.style.opacity = '1';
         }, 1000);
     });
 }
 
 // 显示备用图片
 function showFallbackImage() {
-    const videoElement = document.querySelector('.background-video');
-    const heroBackground = document.querySelector('.hero-background');
-    const heroContent = document.querySelector('.hero-content');
+    const videoElement = document.querySelector('.bg_video video');
+    const bgVideo = document.querySelector('.bg_video');
+    const mainUI = document.querySelector('.main-ui');
     
     // 创建备用背景
     const fallbackDiv = document.createElement('div');
@@ -156,11 +156,11 @@ function showFallbackImage() {
         background-position: center;
     `;
     
-    heroBackground.appendChild(fallbackDiv);
+    bgVideo.appendChild(fallbackDiv);
     videoElement.style.display = 'none';
     
     // 显示文字内容
-    heroContent.style.opacity = '1';
+    mainUI.style.opacity = '1';
 }
 
 // 数字动画计数器
