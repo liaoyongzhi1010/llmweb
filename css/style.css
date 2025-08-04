@@ -1,15 +1,15 @@
-/* 基础重置和变量定义 */
 :root {
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
-    --accent-color: #ff6b6b;
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.8);
-    --text-muted: rgba(255, 255, 255, 0.6);
-    --bg-dark: #0a0a0a;
-    --bg-gradient: linear-gradient(135deg, #667eea, #764ba2);
-    --shadow-light: 0 8px 32px rgba(102, 126, 234, 0.3);
-    --shadow-medium: 0 12px 40px rgba(102, 126, 234, 0.4);
+    --T-Text-1: #333333;
+    --primary-color: #196ef7;
+    --secondary-color: #85bffb;
+    --accent-color: #aecbfe;
+    --text-primary: #333333;
+    --text-secondary: #8f91a8;
+    --text-muted: #8f91a8;
+    --bg-light: #fbfcfe;
+    --bg-gradient: linear-gradient(135deg, #196ef7, #85bffb);
+    --shadow-light: 0 8px 32px rgba(25, 110, 247, 0.3);
+    --shadow-medium: 0 12px 40px rgba(25, 110, 247, 0.4);
     --border-radius: 12px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -20,12 +20,19 @@
     box-sizing: border-box;
 }
 
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background: var(--bg-dark);
-    overflow: hidden; /* 隐藏滚动条，设置为单页 */
+    background: var(--bg-light);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .container {
@@ -34,17 +41,17 @@ body {
     padding: 0 20px;
 }
 
-/* 导航栏样式 */
-.top-navigation {
+.commonHeader {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: transparent; /* 透明，让背景区域显示 */
-    backdrop-filter: none;
-    border-bottom: none;
-    transition: var(--transition);
+    top: 0px;
+    width: 100vw;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    backdrop-filter: blur(32px);
+    z-index: 999;
+    background-color: rgba(251, 252, 254, 0);
 }
 
 .top-navigation.scrolled {
@@ -52,85 +59,103 @@ body {
     backdrop-filter: blur(32px);
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+.commonHeader__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
-}
-
-.nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-    font-size: 20px;
-    color: #ffffff; /* 改为白色 */
-}
-
-.logo {
-    width: 32px;
-    height: 32px;
-    background: #ffffff; /* 白色logo背景 */
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-}
-
-.nav-link {
-    color: #ffffff; /* 改为白色 */
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    transition: var(--transition);
-    position: relative;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: rgba(255, 255, 255, 0.8); /* 悬停时稍微透明的白色 */
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #ffffff; /* 白色下划线 */
-    transition: var(--transition);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
+    height: 48px;
+    padding: 0 32px;
     width: 100%;
 }
 
-
-/* 移动端菜单 */
-.mobile-menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
+.commonHeader__container__right {
+    display: flex;
+    flex-direction: row;
 }
 
-.mobile-menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--text-primary);
+.SiteBrand___R6DmL {
+    display: flex;
+    align-items: center;
+}
+
+.leftMenu___ph6MK {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.SiteBrand___R6DmL .leftMenu___ph6MK .leftMenuLogo___YArLG {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-left: 4px;
+    color: #fff;
+    font-size: 10px;
+    background: #615ced;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px #6f6bef29;
+    opacity: 1;
+    transition: opacity .5s ease, backdrop-filter .5s ease;
+}
+
+.SiteBrand___R6DmL .leftMenu___ph6MK .leftMenuLogo___YArLG .leftMenuLogoImg___W2uMK {
+    width: 20px;
+}
+
+.leftMenuLogoImg___W2uMK {
+    width: 20px;
+    height: 20px;
+}
+
+.commonHeader__container__logo {
+    width: 152px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.SiteBrand___R6DmL .leftMenu___ph6MK .leftMenuColumn___XLoF9 {
+    width: 68px;
+    height: 16px;
+    margin-left: 12px;
+}
+
+.commonHeader__container__right {
+    display: flex;
+    align-items: center;
+}
+
+.UserAccount___vc8Yx {
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+
+.UserAccount__Link___OsXdv {
+    padding: 0 16px;
+    cursor: pointer;
     transition: var(--transition);
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+
+.UserAccount__Link___OsXdv:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.UserAccount__Link__Text___NYqqn {
+    color: #3D3D3D;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    margin: 0px 4px 0px 0px;
+    transition: var(--transition);
+}
+
+.UserAccount__Link___OsXdv:hover .UserAccount__Link__Text___NYqqn {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* 导航栏背景区域 */
@@ -141,185 +166,141 @@ body {
     width: 100%;
     height: 70px;
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
-    z-index: -3; /* 位于视频背景下方 */
+    z-index: -1;
 }
 
-/* 主背景区域 */
-.hero-section {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: flex-start; /* 改为顶部对齐 */
-    justify-content: center;
+.HomeApp {
+    margin: 0;
+    padding: 0;
     overflow: hidden;
 }
 
-.hero-background {
-    position: absolute;
-    top: 70px; /* 从导航栏下方开始 */
-    left: 0;
+.HomeApp .HomeAppBg {
+    z-index: -10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     width: 100%;
-    height: calc(100% - 70px); /* 减去导航栏高度 */
-    z-index: -2;
+    min-height: 550vh;
+    margin: 0;
+    padding: 0;
+    background-color: #fbfcfe;
 }
 
-.background-video {
+.HomeApp .nevigation-fake {
+    display: none;
+}
+
+.HomeApp .part-zero {
+    position: relative;
+    width: 100%;
+    height: 125vh;
+    overflow: hidden;
+}
+
+.HomeApp .bg_video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 70;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 0;
+}
+
+.HomeApp .bg_video video {
+    z-index: 70;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, 
-        rgba(102, 126, 234, 0.3) 0%, 
-        rgba(118, 75, 162, 0.3) 50%, 
-        rgba(255, 107, 107, 0.2) 100%);
-    z-index: -1;
-}
-
-.hero-content {
+.HomeApp .main-ui {
     position: relative;
-    z-index: 10;
-    text-align: center;
-    max-width: 900px;
-    padding: 150px 20px 0 20px; /* 增加顶部内边距，确保内容在视频区域显示 */
-    /* 移除自动动画，等待视频播放完成后显示 */
-}
-
-.hero-text {
-    margin-bottom: 40px;
-}
-
-.hero-title {
-    font-size: clamp(28px, 5vw, 72px);
-    font-weight: 800;
-    margin-bottom: 20px;
-    line-height: 1.1;
-}
-
-.title-main {
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.title-divider {
-    color: var(--text-muted);
-    margin: 0 20px;
-}
-
-.title-sub {
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 0.6em;
-}
-
-.hero-subtitle {
-    font-size: clamp(16px, 2.5vw, 28px);
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-.hero-description {
-    font-size: 18px;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-/* 操作按钮 */
-.hero-actions {
+    z-index: 99;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 1vw;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 60px;
-    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -30vh;
 }
 
-.btn-primary,
-.btn-secondary {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 16px 32px;
-    border-radius: 50px;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
+.HomeApp .enter_ui {
     position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    gap: .93vw;
+    align-items: center;
+    justify-content: center;
+    height: 2.625vw;
 }
 
-.btn-primary {
-    background: var(--bg-gradient);
-    color: var(--text-primary);
-    box-shadow: var(--shadow-light);
+.HomeApp .top-title {
+    margin-top: 3vw;
+    color: var(--T-Text-1);
+    font-weight: 600;
+    font-size: 3vw;
+    font-family: PingFang SC;
+    line-height: 3.5vw;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-medium);
+.HomeApp .top-subtitle {
+    color: #8f91a8;
+    font-weight: 200;
+    font-size: 1.65vw;
+    line-height: 2.5vw;
 }
 
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-primary);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
 
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.btn-icon,
-.play-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-/* 圆形播放按钮 */
-.play-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+.HomeApp .enter_button {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 7.25vw;
+    height: 2.625vw;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1vw;
+    background-color: #196ef7;
+    border-radius: 5.75vw;
     cursor: pointer;
-    transition: var(--transition);
-    padding: 0;
+    transition: background-color .3s ease;
 }
 
-.play-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.5);
+.HomeApp .enter_button:hover {
+    background-color: #85bffb;
 }
 
-.play-btn svg {
-    width: 24px;
-    height: 24px;
-    fill: white;
-    margin-left: 3px; /* 微调播放图标位置 */
+.HomeApp .video_button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.625vw;
+    height: 2.625vw;
+    background-color: #aecbfe;
+    border-radius: 5.75vw;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.HomeApp .video_button:hover {
+    background-color: #5f99ff;
+}
+
+.HomeApp .video_button .play_image {
+    width: 1.25vw;
+    height: 1.375vw;
+    margin-left: .1875vw;
+    background-image: url(https://img.alicdn.com/imgextra/i1/O1CN01FdmruO1Eg5X93t1uQ_!!6000000000380-2-tps-328-376.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 /* 数据统计 */
