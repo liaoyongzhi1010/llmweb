@@ -2,10 +2,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeVideoBackground();
-    initializeDemoAnimations();
     initializeScrollEffects();
     initializeVideoModal();
     initializeMobileMenu();
+    initializeCounterAnimation();
 });
 
 // 导航栏滚动效果
@@ -236,9 +236,12 @@ function initializeVideoModal() {
     const closeBtn = document.querySelector('.modal-close');
     const demoVideo = document.getElementById('demoVideo');
     
+    console.log('Video modal elements:', { modal, videoPlayBtn, closeBtn, demoVideo });
+    
     // 打开弹窗
     if (videoPlayBtn) {
         videoPlayBtn.addEventListener('click', () => {
+            console.log('Video play button clicked');
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
             // 延迟播放，确保弹窗完全显示
@@ -246,6 +249,8 @@ function initializeVideoModal() {
                 demoVideo.play();
             }, 300);
         });
+    } else {
+        console.log('Video play button not found');
     }
     
     // 关闭弹窗
@@ -405,13 +410,6 @@ function initializePerformanceOptimizations() {
     });
     
     images.forEach(img => imageObserver.observe(img));
-    
-    // 预加载关键资源
-    const preloadVideo = document.createElement('link');
-    preloadVideo.rel = 'preload';
-    preloadVideo.as = 'video';
-    preloadVideo.href = 'assets/videos/background.mp4';
-    document.head.appendChild(preloadVideo);
 }
 
 // 错误处理

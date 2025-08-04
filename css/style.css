@@ -43,15 +43,13 @@ body {
 
 .commonHeader {
     position: fixed;
-    top: 0px;
-    width: 100vw;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    backdrop-filter: blur(32px);
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 999;
-    background-color: rgba(251, 252, 254, 0);
+    height: 48px;
+    background-color: transparent;
+    backdrop-filter: blur(32px);
 }
 
 .top-navigation.scrolled {
@@ -65,13 +63,8 @@ body {
     justify-content: space-between;
     height: 48px;
     padding: 0 32px;
-    width: 100%;
 }
 
-.commonHeader__container__right {
-    display: flex;
-    flex-direction: row;
-}
 
 .SiteBrand___R6DmL {
     display: flex;
@@ -130,6 +123,7 @@ body {
     display: flex;
     align-items: center;
     height: 48px;
+    gap: 0px;
 }
 
 .UserAccount__Link___OsXdv {
@@ -142,20 +136,21 @@ body {
 }
 
 .UserAccount__Link___OsXdv:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: transparent;
 }
 
 .UserAccount__Link__Text___NYqqn {
-    color: #3D3D3D;
-    font-size: 14px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 500;
-    margin: 0px 4px 0px 0px;
-    transition: var(--transition);
+    margin-right: 4px;
+    overflow: hidden;
+    color: #3d3d3d;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
+    font-weight: 500 !important;
 }
 
 .UserAccount__Link___OsXdv:hover .UserAccount__Link__Text___NYqqn {
-    color: rgba(255, 255, 255, 0.8);
+    color: #196ef7;
 }
 
 /* 导航栏背景区域 */
@@ -182,10 +177,23 @@ body {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    min-height: 550vh;
+    height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #fbfcfe;
+    background-color: transparent;
+}
+
+.HomeApp .top-nevigation {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 48px;
+    background-color: #fbfcfeb3;
+    backdrop-filter: blur(32px);
 }
 
 .HomeApp .nevigation-fake {
@@ -202,18 +210,15 @@ body {
 .HomeApp .bg_video {
     position: absolute;
     top: 0;
-    left: 0;
     z-index: 70;
     width: 100vw;
-    height: 100vh;
-    margin-top: 0;
+    margin-top: -20vw;
 }
 
 .HomeApp .bg_video video {
     z-index: 70;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
 }
 
 .HomeApp .main-ui {
@@ -225,8 +230,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
-    margin-top: -30vh;
+    margin-top: 48px;
 }
 
 .HomeApp .enter_ui {
@@ -935,10 +939,12 @@ body {
     color: #ff6b6b;
 }
 
-#demoVideo {
+.videoMask .content video {
+    box-sizing: border-box;
     width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
+    background: #fff;
+    border: 0 solid;
+    border-image: linear-gradient(191deg, #196ef7 3%, #196ef700 143%) 0;
 }
 
 /* 动画定义 */
