@@ -4,7 +4,270 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeVideoBackground();
     initializeScrollEffects();
     initializeVideoModal();
+    initializePageNavigation();
 });
+
+// 全屏翻页功能
+let currentPage = 0;
+let isScrolling = false;
+const totalPages = 5;
+
+function initializePageNavigation() {
+    const indicators = document.querySelectorAll('.indicator');
+    
+    // 初始化视频播放设置
+    const bgVideo = document.querySelector('.bg_video video');
+    const page2Video = document.querySelector('.bg_video_page2 video');
+    const page3Video = document.querySelector('.bg_video_page3 video');
+    const page4Video = document.querySelector('.bg_video_page4 video');
+    const page5Video = document.querySelector('.bg_video_page5 video');
+    
+    if (bgVideo) {
+        bgVideo.loop = false; // 不循环播放
+        bgVideo.addEventListener('ended', () => {
+            console.log('第一页视频播放结束，停留在最后一帧');
+        });
+    }
+    
+    if (page2Video) {
+        page2Video.pause(); // 初始暂停第二页视频
+        page2Video.loop = false; // 不循环播放
+        page2Video.addEventListener('ended', () => {
+            console.log('第二页视频播放结束，停留在最后一帧');
+        });
+    }
+    
+    if (page3Video) {
+        page3Video.pause(); // 初始暂停第三页视频
+        page3Video.loop = false; // 不循环播放
+        page3Video.addEventListener('ended', () => {
+            console.log('第三页视频播放结束，停留在最后一帧');
+        });
+    }
+    
+    if (page4Video) {
+        page4Video.pause(); // 初始暂停第四页视频
+        page4Video.loop = false; // 不循环播放
+        page4Video.addEventListener('ended', () => {
+            console.log('第四页视频播放结束，停留在最后一帧');
+        });
+    }
+    
+    if (page5Video) {
+        page5Video.pause(); // 初始暂停第五页视频
+        page5Video.loop = false; // 不循环播放
+        page5Video.addEventListener('ended', () => {
+            console.log('第五页视频播放结束，停留在最后一帧');
+        });
+    }
+    
+    // 滚轮事件监听
+    document.addEventListener('wheel', handleWheel, { passive: false });
+    
+    // 键盘事件监听
+    document.addEventListener('keydown', handleKeydown);
+    
+    // 指示器点击事件
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            if (!isScrolling) {
+                goToPage(index);
+            }
+        });
+    });
+    
+    // 触摸事件支持（移动端）
+    initializeTouchNavigation();
+}
+
+function handleWheel(e) {
+    e.preventDefault();
+    
+    if (isScrolling) return;
+    
+    const delta = e.deltaY;
+    
+    if (delta > 0 && currentPage < totalPages - 1) {
+        // 向下滚动，下一页
+        goToPage(currentPage + 1);
+    } else if (delta < 0 && currentPage > 0) {
+        // 向上滚动，上一页
+        goToPage(currentPage - 1);
+    }
+}
+
+function handleKeydown(e) {
+    if (isScrolling) return;
+    
+    switch(e.key) {
+        case 'ArrowDown':
+        case 'PageDown':
+        case ' ': // 空格键
+            e.preventDefault();
+            if (currentPage < totalPages - 1) {
+                goToPage(currentPage + 1);
+            }
+            break;
+        case 'ArrowUp':
+        case 'PageUp':
+            e.preventDefault();
+            if (currentPage > 0) {
+                goToPage(currentPage - 1);
+            }
+            break;
+        case 'Home':
+            e.preventDefault();
+            goToPage(0);
+            break;
+        case 'End':
+            e.preventDefault();
+            goToPage(totalPages - 1);
+            break;
+    }
+}
+
+function goToPage(pageIndex) {
+    if (isScrolling || pageIndex === currentPage) return;
+    
+    isScrolling = true;
+    const partZero = document.querySelector('.part-zero');
+    const partOne = document.querySelector('.part-one');
+    const partTwo = document.querySelector('.part-two');
+    const partThree = document.querySelector('.part-three');
+    const partFour = document.querySelector('.part-four');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    // 检查页面元素是否存在
+    if (!partZero || !partOne || !partTwo || !partThree || !partFour) {
+        console.error('找不到页面元素！');
+        isScrolling = false;
+        return;
+    }
+    
+    // 更新当前页
+    currentPage = pageIndex;
+    
+    // 全屏滚动切换：每次只显示一个页面
+    // 重置所有页面状态
+    partZero.classList.remove('hide');
+    partOne.classList.remove('active');
+    partTwo.classList.remove('active');
+    partThree.classList.remove('active');
+    partFour.classList.remove('active');
+    
+    // 根据当前页面显示对应的页面
+    if (currentPage === 0) {
+        // 显示第1页，隐藏其他页面
+    } else if (currentPage === 1) {
+        partZero.classList.add('hide');
+        partOne.classList.add('active');
+    } else if (currentPage === 2) {
+        partZero.classList.add('hide');
+        partTwo.classList.add('active');
+    } else if (currentPage === 3) {
+        partZero.classList.add('hide');
+        partThree.classList.add('active');
+    } else if (currentPage === 4) {
+        partZero.classList.add('hide');
+        partFour.classList.add('active');
+    }
+    
+    // 更新指示器状态
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentPage);
+    });
+    
+    // 视频管理
+    managePageVideos();
+    
+    // 重置滚动锁定
+    setTimeout(() => {
+        isScrolling = false;
+    }, 800); // 与CSS动画时间匹配
+}
+
+function managePageVideos() {
+    const bgVideo = document.querySelector('.bg_video video');
+    const page2Video = document.querySelector('.bg_video_page2 video');
+    const page3Video = document.querySelector('.bg_video_page3 video');
+    const page4Video = document.querySelector('.bg_video_page4 video');
+    const page5Video = document.querySelector('.bg_video_page5 video');
+    
+    // 先暂停所有视频，避免冲突
+    if (bgVideo) bgVideo.pause();
+    if (page2Video) page2Video.pause();
+    if (page3Video) page3Video.pause();
+    if (page4Video) page4Video.pause();
+    if (page5Video) page5Video.pause();
+    
+    // 延迟一小段时间后播放对应视频
+    setTimeout(() => {
+        if (currentPage === 0) {
+            // 第一页 - 播放第一页视频
+            if (bgVideo) {
+                bgVideo.play().catch(error => {
+                    console.log('第一页视频播放失败:', error.name);
+                });
+            }
+        } else if (currentPage === 1) {
+            // 第二页 - 播放第二页视频
+            if (page2Video) {
+                page2Video.play().catch(error => {
+                    console.log('第二页视频播放失败:', error.name);
+                });
+            }
+        } else if (currentPage === 2) {
+            // 第三页 - 播放第三页视频
+            if (page3Video) {
+                page3Video.play().catch(error => {
+                    console.log('第三页视频播放失败:', error.name);
+                });
+            }
+        } else if (currentPage === 3) {
+            // 第四页 - 播放第四页视频
+            if (page4Video) {
+                page4Video.play().catch(error => {
+                    console.log('第四页视频播放失败:', error.name);
+                });
+            }
+        } else if (currentPage === 4) {
+            // 第五页 - 播放第五页视频
+            if (page5Video) {
+                page5Video.play().catch(error => {
+                    console.log('第五页视频播放失败:', error.name);
+                });
+            }
+        }
+    }, 100); // 短暂延迟避免冲突
+}
+
+// 触摸导航支持
+function initializeTouchNavigation() {
+    let startY = 0;
+    let endY = 0;
+    const minSwipeDistance = 50;
+    
+    document.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    document.addEventListener('touchend', (e) => {
+        if (isScrolling) return;
+        
+        endY = e.changedTouches[0].clientY;
+        const diff = startY - endY;
+        
+        if (Math.abs(diff) > minSwipeDistance) {
+            if (diff > 0 && currentPage < totalPages - 1) {
+                // 向上滑动，下一页
+                goToPage(currentPage + 1);
+            } else if (diff < 0 && currentPage > 0) {
+                // 向下滑动，上一页
+                goToPage(currentPage - 1);
+            }
+        }
+    }, { passive: true });
+}
 
 // 导航栏滚动效果
 function initializeNavigation() {
@@ -186,7 +449,7 @@ function initializeVideoModal() {
     const closeBtn = document.querySelector('.videoClose');
     const demoVideo = modal ? modal.querySelector('video') : null;
     
-    console.log('Video modal elements:', { modal, videoPlayBtn, closeBtn, demoVideo });
+    console.log('Video modal elements found');
     
     // 打开弹窗
     if (videoPlayBtn) {
