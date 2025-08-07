@@ -863,72 +863,401 @@ body {
     border: 2px solid transparent;
 }
 
+/* 第六页样式 - 产品动态页面 */
+.HomeApp .part-five {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100vh;
+    background: #f8f9fa;
+    transform: translateY(100vh);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    padding: 48px 0 0 0;
+    overflow-y: auto;
+}
+
+.HomeApp .part-five.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.news-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+/* 产品动态标题 */
+.news-header {
+    text-align: center;
+    margin: 40px 0 60px 0;
+}
+
+.news-title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--T-Text-1);
+    margin: 0;
+    font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+}
+
+/* 新闻内容区域 - 进一步增大突出 */
+.news-content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 120px;
+}
+
+.news-card {
+    display: flex;
+    gap: 50px;
+    background: #fff;
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+}
+
+.news-image {
+    flex-shrink: 0;
+    width: 350px;
+    height: 240px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.news-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.news-text h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--T-Text-1);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.news-text p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0;
+    flex: 1;
+}
+
+.news-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: auto;
+}
+
+.news-date {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.news-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 24px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* 快速链接区域 - 进一步紧凑 */
+.quick-links-section {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: auto;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.quick-links-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 左侧品牌信息 */
+.quick-links-brand {
+    flex-shrink: 0;
+    text-align: left;
+}
+
+.quick-links-brand-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--T-Text-1);
+    margin: 0 0 4px 0;
+    font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.quick-links-brand-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* 右侧链接网格 - 更紧凑 */
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: auto;
+    min-width: 600px;
+}
+
+.quick-links-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.quick-links-column h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--T-Text-1);
+    margin: 0 0 10px 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.quick-links-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.quick-links-column li {
+    margin-bottom: 4px;
+}
+
+.quick-links-column a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: var(--transition);
+    display: block;
+    padding: 1px 0;
+    position: relative;
+    white-space: nowrap;
+}
+
+.quick-links-column a:hover {
+    color: var(--primary-color);
+    transform: translateX(3px);
+}
+
+.quick-links-column a::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.quick-links-column a:hover::before {
+    width: 3px;
+}
+
+/* 底部版权 */
+.footer-copyright {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-copyright p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0 0 16px 0;
+    font-weight: 400;
+}
+
+.footer-links-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-links-bottom span {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.footer-links-bottom span:hover {
+    color: var(--primary-color);
+    background: rgba(25, 110, 247, 0.05);
+}
+
 /* 响应式设计 */
 @media (max-width: 1024px) {
-    .HomeApp .feature-cards {
-        grid-template-columns: 1fr;
+    .news-card {
+        flex-direction: column;
+        gap: 30px;
+        padding: 35px;
+    }
+    
+    .news-image {
+        width: 100%;
+        height: 280px;
+    }
+    
+    .news-text h3 {
+        font-size: 1.6rem;
+    }
+    
+    .news-text p {
+        font-size: 1.05rem;
+    }
+    
+    .quick-links-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .quick-links-grid {
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+        min-width: auto;
+        width: 100%;
     }
     
-    .HomeApp .page2-title {
-        font-size: 36px;
-        line-height: 42px;
+    .quick-links-brand-title {
+        font-size: 1.6rem;
     }
     
-    .HomeApp .page2-subtitle {
-        font-size: 18px;
-        line-height: 26px;
+    .news-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-page-container {
+        padding: 0 20px;
     }
     
-    .HomeApp .feature-card {
-        padding: 20px;
+    .news-card {
+        padding: 30px;
     }
     
-    .HomeApp .feature-card .card-icon {
-        font-size: 36px;
-        margin-bottom: 12px;
+    .news-content {
+        max-width: 100%;
+        margin-bottom: 80px;
     }
     
-    .HomeApp .feature-card h3 {
-        font-size: 18px;
-        margin-bottom: 8px;
+    .quick-links-container {
+        justify-content: center;
     }
     
-    .HomeApp .feature-card p {
-        font-size: 14px;
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+        min-width: auto;
     }
     
-    .HomeApp .action-button {
-        padding: 12px 24px;
-        font-size: 14px;
+    .quick-links-column {
+        align-items: center;
     }
     
-    .page-indicators {
-        right: 20px;
-    }
-    
-    .demo-content {
-        flex-direction: column !important;
-        gap: 40px;
+    .quick-links-brand {
         text-align: center;
     }
     
-    .demo-content.reverse {
-        flex-direction: column !important;
+    .quick-links-brand-title {
+        font-size: 1.5rem;
     }
     
-    .demo-visual {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
+    .news-title {
+        font-size: 2rem;
     }
     
-    .demo-text h3 {
-        font-size: 28px;
+    .footer-links-bottom {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-title {
+        font-size: 1.8rem;
     }
     
-    .demo-container {
-        padding: 0 20px;
+    .news-text h3 {
+        font-size: 1.4rem;
+    }
+    
+    .news-text p {
+        font-size: 1rem;
+    }
+    
+    .news-card {
+        padding: 25px;
+    }
+    
+    .quick-links-brand-title {
+        font-size: 1.3rem;
+    }
+    
+    .quick-links-column a::before {
+        display: none;
+    }
+    
+    .quick-links-column a:hover {
+        transform: none;
     }
 }
 

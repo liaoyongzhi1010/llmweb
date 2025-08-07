@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoLLM 帮助中心 & API文档</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/docs.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- 顶部导航 - 使用首页样式 -->
+    <div class="commonHeader">
+        <div class="commonHeader__container">
+            <div class="SiteBrand___R6DmL">
+                <div class="leftMenu___ph6MK">
+                    <div class="leftMenuLogo___YArLG">
+                        <img class="leftMenuLogoImg___W2uMK" src="https://img.alicdn.com/imgextra/i3/O1CN01fhXie81ILFyqwx1Kf_!!6000000000876-55-tps-20-20.svg" alt="logo">
+                    </div>
+                    <img class="leftMenuColumn___XLoF9" src="https://img.alicdn.com/imgextra/i4/O1CN01dP5zcl1JzOJ9jsxfM_!!6000000001099-2-tps-272-64.png" alt="玄知大模型">
+                </div>
+            </div>
+            <div class="commonHeader__container__right">
+                <div class="UserAccount___vc8Yx">
+                    <span class="UserAccount__Link___OsXdv" onclick="window.open('index.html', '_self')">
+                        <span class="UserAccount__Link__Text___NYqqn">返回首页</span>
+                    </span>
+                    <span class="UserAccount__Link___OsXdv">
+                        <a href="#help-section" style="color: inherit; text-decoration: none;">
+                            <span class="UserAccount__Link__Text___NYqqn">帮助中心</span>
+                        </a>
+                    </span>
+                    <span class="UserAccount__Link___OsXdv">
+                        <a href="#api-section" style="color: inherit; text-decoration: none;">
+                            <span class="UserAccount__Link__Text___NYqqn">API文档</span>
+                        </a>
+                    </span>
+                    <span class="UserAccount__Link___OsXdv" onclick="window.open('https://cryptollm.xidian.edu.cn/', '_blank')">
+                        <span class="UserAccount__Link__Text___NYqqn">登录/注册</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="docs-container">
+        <!-- 右侧导航 -->
+        <aside class="docs-sidebar">
+            <nav class="docs-nav">
+                <div class="nav-section">
+                    <h3 class="nav-title">帮助中心</h3>
+                    <ul>
+                        <li><a href="#overview" class="active">产品概述</a></li>
+                        <li><a href="#getting-started">快速入门</a></li>
+                        <li><a href="#features">核心功能</a></li>
+                        <li><a href="#usage-guide">使用指南</a></li>
+                        <li><a href="#scenarios">应用场景</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                        <li><a href="#support">技术支持</a></li>
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3 class="nav-title">API文档</h3>
+                    <ul>
+                        <li><a href="#api-overview">API概述</a></li>
+                        <li><a href="#authentication">认证方式</a></li>
+                        <li><a href="#api-getting-started">快速开始</a></li>
+                        <li><a href="#endpoints">API参考</a></li>
+                        <li><a href="#crypto-analysis">密码学分析</a></li>
+                        <li><a href="#error-handling">错误处理</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- 主内容区域 -->
+        <main class="docs-content">
+            <!-- 帮助中心部分 -->
+            <div id="help-section" class="content-section">
+                <h1 class="section-title">帮助中心</h1>
+                
+                <!-- 产品概述 -->
+                <section id="overview" class="content-block">
+                    <h2>产品概述</h2>
+                    <p>CryptoLLM 是专业的密码学AI助手，为安全研究人员、开发者和企业提供智能化的密码学分析服务。基于先进的大语言模型技术，CryptoLLM 能够理解复杂的密码学问题，提供准确的分析结果和专业建议。</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>智能识别</h3>
+                            <p>自动识别加密算法类型、密钥长度、加密模式等关键信息</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>安全分析</h3>
+                            <p>全面评估密码学实现的安全性，识别潜在漏洞和风险点</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>专业建议</h3>
+                            <p>基于最新安全标准，提供改进建议和最佳实践指导</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>多场景支持</h3>
+                            <p>支持学术研究、产品开发、安全审计等多种应用场景</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 快速入门 -->
+                <section id="getting-started" class="content-block">
+                    <h2>快速入门</h2>
+                    <p>按照以下步骤，您可以快速开始使用 CryptoLLM 进行密码学分析：</p>
+                    
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>访问服务</h3>
+                                <p>前往 <a href="https://cryptollm.xidian.edu.cn/" target="_blank">CryptoLLM 官网</a> 或直接使用在线服务开始对话。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>描述问题</h3>
+                                <p>清晰地描述您的密码学问题或上传相关文件，提供足够的上下文信息。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>获得分析</h3>
+                                <p>CryptoLLM 将为您提供详细的分析结果、安全评估和改进建议。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 核心功能 -->
+                <section id="features" class="content-block">
+                    <h2>核心功能</h2>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <h3>算法识别与分析</h3>
+                            <p>支持主流密码学算法的识别和深度分析：</p>
+                            <ul>
+                                <li><strong>对称加密：</strong>AES、DES、3DES、ChaCha20、Salsa20</li>
+                                <li><strong>非对称加密：</strong>RSA、ECC、ElGamal、DSA</li>
+                                <li><strong>哈希函数：</strong>SHA系列、MD5、BLAKE2、Keccak</li>
+                                <li><strong>数字签名：</strong>ECDSA、RSA签名、EdDSA</li>
+                                <li><strong>密钥交换：</strong>DH、ECDH、X25519、X448</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h3>安全性评估</h3>
+                            <p>全方位的密码学安全评估服务：</p>
+                            <ul>
+                                <li>密钥长度和强度评估</li>
+                                <li>算法配置安全性检查</li>
+                                <li>实现方式漏洞检测</li>
+                                <li>侧信道攻击风险评估</li>
+                                <li>合规性标准检查</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 使用指南 -->
+                <section id="usage-guide" class="content-block">
+                    <h2>使用指南</h2>
+                    
+                    <div class="guide-content">
+                        <h3>基础分析</h3>
+                        <p>向 CryptoLLM 提供哈希值，系统将自动识别算法类型并进行分析：</p>
+                        <div class="example-box">
+                            <div class="example-title">示例对话</div>
+                            <div class="chat-example">
+                                <div class="user-message">请分析这个哈希值：d41d8cd98f00b204e9800998ecf8427e</div>
+                                <div class="ai-message">这是一个MD5哈希值，长度为32位十六进制字符。经过分析，这个哈希对应的原文是空字符串("")。需要注意的是，MD5算法已存在碰撞攻击，不建议在安全敏感场景中使用，建议升级至SHA-256或更安全的哈希算法。</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 应用场景 -->
+                <section id="scenarios" class="content-block">
+                    <h2>应用场景</h2>
+                    
+                    <div class="scenarios-grid">
+                        <div class="scenario-card">
+                            <h3>学术研究</h3>
+                            <p>为密码学研究提供智能分析工具</p>
+                        </div>
+                        <div class="scenario-card">
+                            <h3>产品开发</h3>
+                            <p>协助开发团队构建安全产品</p>
+                        </div>
+                        <div class="scenario-card">
+                            <h3>安全审计</h3>
+                            <p>专业的安全评估和审计服务</p>
+                        </div>
+                        <div class="scenario-card">
+                            <h3>教育培训</h3>
+                            <p>密码学教育和人才培养</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 常见问题 -->
+                <section id="faq" class="content-block">
+                    <h2>常见问题</h2>
+                    
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h3>CryptoLLM 适用于哪些用户群体？</h3>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>CryptoLLM 主要面向安全研究人员、软件开发者、网络安全专家、学术研究者和企业用户。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h3>如何保证分析结果的准确性和可靠性？</h3>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>我们基于权威密码学文献和标准训练模型，持续更新最新的安全研究成果，并建议用户结合专业判断使用分析结果。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 技术支持 -->
+                <section id="support" class="content-block">
+                    <h2>技术支持</h2>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <h3>📧 邮件支持</h3>
+                            <p>technical-support@cryptollm.xidian.edu.cn</p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>🎓 学术合作</h3>
+                            <p>nss-lab@xidian.edu.cn</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- API文档部分 -->
+            <div id="api-section" class="content-section">
+                <h1 class="section-title">API文档</h1>
+                
+                <!-- API概述 -->
+                <section id="api-overview" class="content-block">
+                    <h2>API概述</h2>
+                    <p>CryptoLLM API 为开发者提供了强大的密码学分析能力，支持多种加密算法的分析、破解和安全评估。通过简单的HTTP请求，您可以轻松集成我们的AI密码学专家能力到您的应用中。</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>加密算法分析</h3>
+                            <p>支持RSA、AES、DES等主流加密算法的安全性分析</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>密钥管理</h3>
+                            <p>提供密钥生成、验证和强度评估功能</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>安全评估</h3>
+                            <p>全面的密码学安全性评估和风险分析报告</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>高性能</h3>
+                            <p>毫秒级响应，支持高并发请求处理</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 认证方式 -->
+                <section id="authentication" class="content-block">
+                    <h2>认证方式</h2>
+                    <p>CryptoLLM API 使用API密钥进行身份验证。您需要在请求头中包含您的API密钥：</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>HTTP Header</span>
+                            <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                        </div>
+                        <pre><code>Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json</code></pre>
+                    </div>
+                </section>
+
+                <!-- 快速开始 -->
+                <section id="api-getting-started" class="content-block">
+                    <h2>快速开始</h2>
+                    <p>以下是一个简单的示例，展示如何使用CryptoLLM API进行密码学分析：</p>
+
+                    <div class="code-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" onclick="showTab('curl')">cURL</button>
+                            <button class="tab-btn" onclick="showTab('python')">Python</button>
+                            <button class="tab-btn" onclick="showTab('javascript')">JavaScript</button>
+                        </div>
+
+                        <div class="tab-content active" id="curl">
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span>cURL</span>
+                                    <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                                </div>
+                                <pre><code>curl -X POST "https://api.cryptollm.xidian.edu.cn/v1/analyze" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "hash_analysis",
+    "input": "5d41402abc4b2a76b9719d911017c592",
+    "algorithm": "md5"
+  }'</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="python">
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span>Python</span>
+                                    <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                                </div>
+                                <pre><code>import requests
+
+url = "https://api.cryptollm.xidian.edu.cn/v1/analyze"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+data = {
+    "type": "hash_analysis",
+    "input": "5d41402abc4b2a76b9719d911017c592",
+    "algorithm": "md5"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(result)</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="javascript">
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span>JavaScript</span>
+                                    <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                                </div>
+                                <pre><code>const response = await fetch('https://api.cryptollm.xidian.edu.cn/v1/analyze', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    type: 'hash_analysis',
+    input: '5d41402abc4b2a76b9719d911017c592',
+    algorithm: 'md5'
+  })
+});
+
+const result = await response.json();
+console.log(result);</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API参考 -->
+                <section id="endpoints" class="content-block">
+                    <h2>API参考</h2>
+                    
+                    <div class="endpoint-list">
+                        <div class="endpoint-item">
+                            <div class="endpoint-header">
+                                <span class="method post">POST</span>
+                                <span class="url">/v1/analyze</span>
+                            </div>
+                            <p>通用分析接口，支持多种密码学分析任务</p>
+                        </div>
+
+                        <div class="endpoint-item">
+                            <div class="endpoint-header">
+                                <span class="method get">GET</span>
+                                <span class="url">/v1/algorithms</span>
+                            </div>
+                            <p>获取支持的加密算法列表</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 密码学分析 -->
+                <section id="crypto-analysis" class="content-block">
+                    <h2>密码学分析</h2>
+                    
+                    <h3>哈希分析</h3>
+                    <p>分析哈希值，识别哈希算法类型，尝试破解弱密码：</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>请求示例</span>
+                            <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                        </div>
+                        <pre><code>{
+  "type": "hash_analysis",
+  "input": "5d41402abc4b2a76b9719d911017c592",
+  "options": {
+    "crack": true,
+    "dictionary": "common_passwords"
+  }
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- 错误处理 -->
+                <section id="error-handling" class="content-block">
+                    <h2>错误处理</h2>
+                    <p>API使用标准HTTP状态码指示请求的结果：</p>
+                    
+                    <div class="error-codes">
+                        <div class="error-item">
+                            <span class="code">200</span>
+                            <span class="description">请求成功</span>
+                        </div>
+                        <div class="error-item">
+                            <span class="code">400</span>
+                            <span class="description">请求参数错误</span>
+                        </div>
+                        <div class="error-item">
+                            <span class="code">401</span>
+                            <span class="description">未授权，请检查API密钥</span>
+                        </div>
+                        <div class="error-item">
+                            <span class="code">429</span>
+                            <span class="description">请求频率超限</span>
+                        </div>
+                        <div class="error-item">
+                            <span class="code">500</span>
+                            <span class="description">服务器内部错误</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/docs.js"></script>
+</body>
+</html>

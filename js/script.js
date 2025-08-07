@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // 全屏翻页功能
 let currentPage = 0;
 let isScrolling = false;
-const totalPages = 5;
+const totalPages = 6;
 
 function initializePageNavigation() {
     const indicators = document.querySelectorAll('.indicator');
@@ -135,10 +135,11 @@ function goToPage(pageIndex) {
     const partTwo = document.querySelector('.part-two');
     const partThree = document.querySelector('.part-three');
     const partFour = document.querySelector('.part-four');
+    const partFive = document.querySelector('.part-five');
     const indicators = document.querySelectorAll('.indicator');
     
     // 检查页面元素是否存在
-    if (!partZero || !partOne || !partTwo || !partThree || !partFour) {
+    if (!partZero || !partOne || !partTwo || !partThree || !partFour || !partFive) {
         console.error('找不到页面元素！');
         isScrolling = false;
         return;
@@ -154,6 +155,7 @@ function goToPage(pageIndex) {
     partTwo.classList.remove('active');
     partThree.classList.remove('active');
     partFour.classList.remove('active');
+    partFive.classList.remove('active');
     
     // 根据当前页面显示对应的页面
     if (currentPage === 0) {
@@ -170,6 +172,9 @@ function goToPage(pageIndex) {
     } else if (currentPage === 4) {
         partZero.classList.add('hide');
         partFour.classList.add('active');
+    } else if (currentPage === 5) {
+        partZero.classList.add('hide');
+        partFive.classList.add('active');
     }
     
     // 更新指示器状态
