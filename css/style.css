@@ -83,7 +83,7 @@ body {
     margin-left: 4px;
     color: #fff;
     font-size: 10px;
-    background: #615ced;
+    /* background: #615ced; */
     border-radius: 10px;
     box-shadow: 0 8px 16px #6f6bef29;
     opacity: 1;
@@ -105,11 +105,24 @@ body {
     cursor: pointer;
 }
 
-.SiteBrand___R6DmL .leftMenu___ph6MK .leftMenuColumn___XLoF9 {
+/* .SiteBrand___R6DmL .leftMenu___ph6MK .leftMenuColumn___XLoF9 {
     width: 68px;
     height: 16px;
     margin-left: 12px;
+} */
+.leftMenuColumn___XLoF9 {
+    display: inline-block;
+    width: 68px;
+    height: 16px;
+    margin-left: 12px;
+
+    font-size: 16px;          /* 调整字体大小接近图片效果 */
+    font-weight: bold;        /* 如果图片是粗体 */
+    color: #4d4d4d;           /* 文字颜色，按图片颜色调整 */
+    line-height: 16px;        /* 垂直居中 */
+    white-space: nowrap;      /* 避免换行 */
 }
+
 
 .commonHeader__container__right {
     display: flex;
