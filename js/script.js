@@ -205,11 +205,12 @@ function managePageVideos() {
     if (page4Video) page4Video.pause();
     if (page5Video) page5Video.pause();
     
-    // 延迟一小段时间后播放对应视频
+    // 延迟播放对应视频，优化性能
     setTimeout(() => {
         if (currentPage === 0) {
             // 第一页 - 播放第一页视频
             if (bgVideo) {
+                bgVideo.currentTime = 0; // 从头开始播放
                 bgVideo.play().catch(error => {
                     console.log('第一页视频播放失败:', error.name);
                 });
@@ -217,6 +218,7 @@ function managePageVideos() {
         } else if (currentPage === 1) {
             // 第二页 - 播放第二页视频
             if (page2Video) {
+                page2Video.currentTime = 0;
                 page2Video.play().catch(error => {
                     console.log('第二页视频播放失败:', error.name);
                 });
@@ -224,6 +226,7 @@ function managePageVideos() {
         } else if (currentPage === 2) {
             // 第三页 - 播放第三页视频
             if (page3Video) {
+                page3Video.currentTime = 0;
                 page3Video.play().catch(error => {
                     console.log('第三页视频播放失败:', error.name);
                 });
@@ -231,6 +234,7 @@ function managePageVideos() {
         } else if (currentPage === 3) {
             // 第四页 - 播放第四页视频
             if (page4Video) {
+                page4Video.currentTime = 0;
                 page4Video.play().catch(error => {
                     console.log('第四页视频播放失败:', error.name);
                 });
@@ -238,12 +242,13 @@ function managePageVideos() {
         } else if (currentPage === 4) {
             // 第五页 - 播放第五页视频
             if (page5Video) {
+                page5Video.currentTime = 0;
                 page5Video.play().catch(error => {
                     console.log('第五页视频播放失败:', error.name);
                 });
             }
         }
-    }, 100); // 短暂延迟避免冲突
+    }, 200); // 适当延迟减少卡顿
 }
 
 // 触摸导航支持
@@ -462,7 +467,7 @@ function initializeVideoModal() {
             console.log('Video play button clicked');
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
-            // 延迟播放，确保弹窗完全显示
+            // 延迟播放，确保弹窗完全显示后自动播放
             setTimeout(() => {
                 if (demoVideo) {
                     demoVideo.play().catch(error => {
