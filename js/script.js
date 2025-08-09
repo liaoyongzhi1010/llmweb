@@ -205,50 +205,48 @@ function managePageVideos() {
     if (page4Video) page4Video.pause();
     if (page5Video) page5Video.pause();
     
-    // 延迟播放对应视频，优化性能
-    setTimeout(() => {
-        if (currentPage === 0) {
-            // 第一页 - 播放第一页视频
-            if (bgVideo) {
-                bgVideo.currentTime = 0; // 从头开始播放
-                bgVideo.play().catch(error => {
-                    console.log('第一页视频播放失败:', error.name);
-                });
-            }
-        } else if (currentPage === 1) {
-            // 第二页 - 播放第二页视频
-            if (page2Video) {
-                page2Video.currentTime = 0;
-                page2Video.play().catch(error => {
-                    console.log('第二页视频播放失败:', error.name);
-                });
-            }
-        } else if (currentPage === 2) {
-            // 第三页 - 播放第三页视频
-            if (page3Video) {
-                page3Video.currentTime = 0;
-                page3Video.play().catch(error => {
-                    console.log('第三页视频播放失败:', error.name);
-                });
-            }
-        } else if (currentPage === 3) {
-            // 第四页 - 播放第四页视频
-            if (page4Video) {
-                page4Video.currentTime = 0;
-                page4Video.play().catch(error => {
-                    console.log('第四页视频播放失败:', error.name);
-                });
-            }
-        } else if (currentPage === 4) {
-            // 第五页 - 播放第五页视频
-            if (page5Video) {
-                page5Video.currentTime = 0;
-                page5Video.play().catch(error => {
-                    console.log('第五页视频播放失败:', error.name);
-                });
-            }
+    // 立即播放对应视频
+    if (currentPage === 0) {
+        // 第一页 - 播放第一页视频
+        if (bgVideo) {
+            bgVideo.currentTime = 0; // 从头开始播放
+            bgVideo.play().catch(error => {
+                console.log('第一页视频播放失败:', error.name);
+            });
         }
-    }, 200); // 适当延迟减少卡顿
+    } else if (currentPage === 1) {
+        // 第二页 - 播放第二页视频
+        if (page2Video) {
+            page2Video.currentTime = 0;
+            page2Video.play().catch(error => {
+                console.log('第二页视频播放失败:', error.name);
+            });
+        }
+    } else if (currentPage === 2) {
+        // 第三页 - 播放第三页视频
+        if (page3Video) {
+            page3Video.currentTime = 0;
+            page3Video.play().catch(error => {
+                console.log('第三页视频播放失败:', error.name);
+            });
+        }
+    } else if (currentPage === 3) {
+        // 第四页 - 播放第四页视频
+        if (page4Video) {
+            page4Video.currentTime = 0;
+            page4Video.play().catch(error => {
+                console.log('第四页视频播放失败:', error.name);
+            });
+        }
+    } else if (currentPage === 4) {
+        // 第五页 - 播放第五页视频
+        if (page5Video) {
+            page5Video.currentTime = 0;
+            page5Video.play().catch(error => {
+                console.log('第五页视频播放失败:', error.name);
+            });
+        }
+    }
 }
 
 // 触摸导航支持
@@ -320,9 +318,9 @@ function initializeVideoBackground() {
         // 设置初始透明度
         mainUI.style.opacity = '0';
         
-        // 监听视频时间更新，在3秒显示文字
+        // 监听视频时间更新，在2.5秒显示文字
         video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= 3.0 && mainUI.style.opacity === '0') {
+            if (video.currentTime >= 2.5 && mainUI.style.opacity === '0') {
                 mainUI.style.opacity = '1';
             }
         });
@@ -364,8 +362,8 @@ function initializeVideoBackground() {
 
         // 如果视频很短，设置最小等待时间
         video.addEventListener('loadedmetadata', () => {
-            if (video.duration < 3.0) {
-                // 如果视频少于3秒，等待视频播放完后再显示文字
+            if (video.duration < 2.5) {
+                // 如果视频少于2.5秒，等待视频播放完后再显示文字
                 setTimeout(() => {
                     if (mainUI.style.opacity === '0') {
                         mainUI.style.opacity = '1';
