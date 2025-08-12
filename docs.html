@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/docs.css">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <!-- 顶部导航 - 使用首页样式 -->
     <div class="commonHeader">
@@ -35,7 +37,8 @@
                             <span class="UserAccount__Link__Text___NYqqn">API文档</span>
                         </a>
                     </span>
-                    <span class="UserAccount__Link___OsXdv" onclick="window.open('https://cryptollm.xidian.edu.cn/', '_blank')">
+                    <span class="UserAccount__Link___OsXdv"
+                        onclick="window.open('https://cryptollm.xidian.edu.cn/', '_blank')">
                         <span class="UserAccount__Link__Text___NYqqn">登录/注册</span>
                     </span>
                 </div>
@@ -78,13 +81,14 @@
             <!-- 帮助中心部分 -->
             <div id="help-section" class="content-section">
                 <h1 class="section-title">帮助中心</h1>
-                
+
                 <!-- 产品概述 -->
                 <section id="overview" class="content-block">
                     <h2>产品概述</h2>
-                    <p>CryptoLLM 是专业的密码学AI助手，为安全研究人员、开发者和企业提供智能化的密码学分析服务。基于先进的大语言模型技术，CryptoLLM 能够理解复杂的密码学问题，提供准确的分析结果和专业建议。</p>
-                    
-                    <div class="feature-grid">                        
+                    <p>CryptoLLM 是专业的密码学AI助手，为安全研究人员、开发者和企业提供智能化的密码学分析服务。基于先进的大语言模型技术，CryptoLLM
+                        能够理解复杂的密码学问题，提供准确的分析结果和专业建议。</p>
+
+                    <div class="feature-grid">
                         <div class="feature-card">
                             <h3>智能识别</h3>
                             <p>自动识别加密算法类型、密钥长度、加密模式等关键信息</p>
@@ -112,12 +116,13 @@
                 <section id="getting-started" class="content-block">
                     <h2>快速入门</h2>
                     <p>按照以下步骤，您可以快速开始使用 CryptoLLM 进行密码学分析：</p>
-                    
+
                     <h3>访问服务</h3>
                     <p>前往 <a href="https://cryptollm.xidian.edu.cn/" target="_blank">CryptoLLM 官网</a> 直接使用在线服务开始对话。</p>
 
                     <h3>发起对话</h3>
-                    <p>对话采用一问一答的交互形式，支持单轮和多轮两种模式。单轮对话允许用户直接输入一个密码学问题或协议生成任务指令，提交后即可获取大模型的回答；多轮对话则在此基础上，用户可以根据大模型的回复继续追问或补充指令，实现连续交互。操作时，单轮对话只需输入问题并提交即可完成，而多轮对话可通过多次提问和回复形成上下文关联的连续对话。</p>
+                    <p>对话采用一问一答的交互形式，支持单轮和多轮两种模式。单轮对话允许用户直接输入一个密码学问题或协议生成任务指令，提交后即可获取大模型的回答；多轮对话则在此基础上，用户可以根据大模型的回复继续追问或补充指令，实现连续交互。操作时，单轮对话只需输入问题并提交即可完成，而多轮对话可通过多次提问和回复形成上下文关联的连续对话。
+                    </p>
 
                     <h3>密码知识问答</h3>
                     <p>用户可以向 CryptoLLM 提问与密码学相关的知识，系统将基于玄知大模型提供准确的回答和解释。</p>
@@ -127,7 +132,7 @@
                     <p>清晰地描述您想要生成的多方安全计算协议，提供足够的上下文信息，或者使用 CryptoLLM 提供的示例模板进行描述。在需求明确后，进行确认执行协议生成。</p>
                     <br>
                     <img width="100%" height="auto" src="assets/images/query_example.png" alt="查询示例" />
-                    
+
                     <h4>获得分析</h4>
                     <p>CryptoLLM 将为您提供详细的协议生成过程、结果和安全评估。</p>
                     <br>
@@ -171,7 +176,7 @@
                 <!-- 核心功能 -->
                 <section id="features" class="content-block">
                     <h2>核心功能</h2>
-                    
+
                     <div class="features-list">
                         <div class="feature-item">
                             <h3>算法识别与分析</h3>
@@ -184,7 +189,7 @@
                                 <li><strong>密钥交换：</strong>DH、ECDH、X25519、X448</li>
                             </ul>
                         </div>
-                        
+
                         <div class="feature-item">
                             <h3>安全性评估</h3>
                             <p>全方位的密码学安全评估服务：</p>
@@ -202,7 +207,7 @@
                 <!-- 使用指南 -->
                 <section id="usage-guide" class="content-block">
                     <h2>使用指南</h2>
-                    
+
                     <div class="guide-content">
                         <h3>基础分析</h3>
                         <p>向 CryptoLLM 提供哈希值，系统将自动识别算法类型并进行分析：</p>
@@ -210,7 +215,9 @@
                             <div class="example-title">示例对话</div>
                             <div class="chat-example">
                                 <div class="user-message">请分析这个哈希值：d41d8cd98f00b204e9800998ecf8427e</div>
-                                <div class="ai-message">这是一个MD5哈希值，长度为32位十六进制字符。经过分析，这个哈希对应的原文是空字符串("")。需要注意的是，MD5算法已存在碰撞攻击，不建议在安全敏感场景中使用，建议升级至SHA-256或更安全的哈希算法。</div>
+                                <div class="ai-message">
+                                    这是一个MD5哈希值，长度为32位十六进制字符。经过分析，这个哈希对应的原文是空字符串("")。需要注意的是，MD5算法已存在碰撞攻击，不建议在安全敏感场景中使用，建议升级至SHA-256或更安全的哈希算法。
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -219,7 +226,7 @@
                 <!-- 应用场景 -->
                 <section id="scenarios" class="content-block">
                     <h2>应用场景</h2>
-                    
+
                     <div class="scenarios-grid">
                         <div class="scenario-card">
                             <h3>学术研究</h3>
@@ -243,7 +250,7 @@
                 <!-- 常见问题 -->
                 <section id="faq" class="content-block">
                     <h2>常见问题</h2>
-                    
+
                     <div class="faq-list">
                         <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
@@ -254,7 +261,7 @@
                                 <p>CryptoLLM 主要面向安全研究人员、软件开发者、网络安全专家、学术研究者和企业用户。</p>
                             </div>
                         </div>
-                        
+
                         <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
                                 <h3>如何保证分析结果的准确性和可靠性？</h3>
@@ -270,7 +277,7 @@
                 <!-- 技术支持 -->
                 <section id="support" class="content-block">
                     <h2>技术支持</h2>
-                    
+
                     <div class="contact-grid">
                         <div class="contact-card">
                             <h3>📧 邮件支持</h3>
@@ -287,12 +294,12 @@
             <!-- API文档部分 -->
             <div id="api-section" class="content-section">
                 <h1 class="section-title">API文档</h1>
-                
+
                 <!-- API概述 -->
                 <section id="api-overview" class="content-block">
                     <h2>API概述</h2>
                     <p>CryptoLLM API 为开发者提供了强大的密码学分析能力，支持多种加密算法的分析、破解和安全评估。通过简单的HTTP请求，您可以轻松集成我们的AI密码学专家能力到您的应用中。</p>
-                    
+
                     <div class="feature-grid">
                         <div class="feature-card">
                             <h3>加密算法分析</h3>
@@ -317,7 +324,7 @@
                 <section id="authentication" class="content-block">
                     <h2>认证方式</h2>
                     <p>CryptoLLM API 使用API密钥进行身份验证。您需要在请求头中包含您的API密钥：</p>
-                    
+
                     <div class="code-block">
                         <div class="code-header">
                             <span>HTTP Header</span>
@@ -411,7 +418,7 @@ console.log(result);</code></pre>
                 <!-- API参考 -->
                 <section id="endpoints" class="content-block">
                     <h2>API参考</h2>
-                    
+
                     <div class="endpoint-list">
                         <div class="endpoint-item">
                             <div class="endpoint-header">
@@ -434,10 +441,10 @@ console.log(result);</code></pre>
                 <!-- 密码学分析 -->
                 <section id="crypto-analysis" class="content-block">
                     <h2>密码学分析</h2>
-                    
+
                     <h3>哈希分析</h3>
                     <p>分析哈希值，识别哈希算法类型，尝试破解弱密码：</p>
-                    
+
                     <div class="code-block">
                         <div class="code-header">
                             <span>请求示例</span>
@@ -458,7 +465,7 @@ console.log(result);</code></pre>
                 <section id="error-handling" class="content-block">
                     <h2>错误处理</h2>
                     <p>API使用标准HTTP状态码指示请求的结果：</p>
-                    
+
                     <div class="error-codes">
                         <div class="error-item">
                             <span class="code">200</span>
@@ -488,4 +495,5 @@ console.log(result);</code></pre>
 
     <script src="js/docs.js"></script>
 </body>
+
 </html>

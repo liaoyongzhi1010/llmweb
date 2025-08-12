@@ -72,6 +72,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
 }
 
 .SiteBrand___R6DmL .leftMenu___ph6MK .leftMenuLogo___YArLG {
@@ -116,11 +117,16 @@ body {
     height: 16px;
     margin-left: 12px;
 
-    font-size: 16px;          /* 调整字体大小接近图片效果 */
-    font-weight: bold;        /* 如果图片是粗体 */
-    color: #4d4d4d;           /* 文字颜色，按图片颜色调整 */
-    line-height: 16px;        /* 垂直居中 */
-    white-space: nowrap;      /* 避免换行 */
+    font-size: 16px;
+    /* 调整字体大小接近图片效果 */
+    font-weight: bold;
+    /* 如果图片是粗体 */
+    color: #4d4d4d;
+    /* 文字颜色，按图片颜色调整 */
+    line-height: 16px;
+    /* 垂直居中 */
+    white-space: nowrap;
+    /* 避免换行 */
 }
 
 
@@ -426,6 +432,7 @@ body {
         opacity: 0;
         transform: translateY(50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -433,12 +440,19 @@ body {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateX(-50%) translateY(0);
     }
+
     40% {
         transform: translateX(-50%) translateY(-10px);
     }
+
     60% {
         transform: translateX(-50%) translateY(-5px);
     }
@@ -760,6 +774,26 @@ body {
     pointer-events: auto;
 }
 
+.HomeApp .part-three .title {
+    margin-right: 26vw;
+    /* 增大右边距，把标题往左移 */
+    align-self: flex-end;
+    text-align: left;
+    max-width: 400px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.HomeApp .part-three .subtitle {
+    margin-right: 18.5vw;
+    /* 增大右边距，把副标题也往左移 */
+    align-self: flex-end;
+    text-align: left;
+    max-width: 600px;
+    /* 再增大宽度让副标题显示为两行 */
+    line-height: 1.5;
+}
+
 /* 第五页样式 */
 .HomeApp .part-four {
     position: fixed;
@@ -888,7 +922,7 @@ body {
     justify-content: flex-start;
     width: 100%;
     height: 100vh;
-    background: #f8f9fa;
+    background: #D1D5D6;
     transform: translateY(100vh);
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
@@ -940,7 +974,7 @@ body {
 .news-card {
     display: flex;
     gap: 50px;
-    background: #fff;
+    background: #E8ECED;
     border-radius: 24px;
     padding: 50px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -1262,36 +1296,36 @@ body {
         gap: 30px;
         padding: 35px;
     }
-    
+
     .news-image {
         width: 100%;
         height: 280px;
     }
-    
+
     .news-text h3 {
         font-size: 1.6rem;
     }
-    
+
     .news-text p {
         font-size: 1.05rem;
     }
-    
+
     .quick-links-container {
         flex-direction: column;
         gap: 25px;
     }
-    
+
     .quick-links-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         min-width: auto;
         width: 100%;
     }
-    
+
     .quick-links-brand-title {
         font-size: 1.6rem;
     }
-    
+
     .news-title {
         font-size: 2.5rem;
     }
@@ -1301,43 +1335,43 @@ body {
     .news-page-container {
         padding: 0 20px;
     }
-    
+
     .news-card {
         padding: 30px;
     }
-    
+
     .news-content {
         max-width: 100%;
         margin-bottom: 80px;
     }
-    
+
     .quick-links-container {
         justify-content: center;
     }
-    
+
     .quick-links-grid {
         grid-template-columns: 1fr;
         gap: 15px;
         text-align: center;
         min-width: auto;
     }
-    
+
     .quick-links-column {
         align-items: center;
     }
-    
+
     .quick-links-brand {
         text-align: center;
     }
-    
+
     .quick-links-brand-title {
         font-size: 1.5rem;
     }
-    
+
     .news-title {
         font-size: 2rem;
     }
-    
+
     .footer-links-bottom {
         flex-direction: column;
         gap: 12px;
@@ -1348,27 +1382,27 @@ body {
     .news-title {
         font-size: 1.8rem;
     }
-    
+
     .news-text h3 {
         font-size: 1.4rem;
     }
-    
+
     .news-text p {
         font-size: 1rem;
     }
-    
+
     .news-card {
         padding: 25px;
     }
-    
+
     .quick-links-brand-title {
         font-size: 1.3rem;
     }
-    
+
     .quick-links-column a::before {
         display: none;
     }
-    
+
     .quick-links-column a:hover {
         transform: none;
     }
@@ -1378,30 +1412,30 @@ body {
     .nav-links {
         display: none;
     }
-    
+
     .mobile-menu-toggle {
         display: flex;
     }
-    
+
     .hero-actions {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .demo-interface,
     .contract-review,
     .document-generator {
         height: 400px;
     }
-    
+
     .demo-text h3 {
         font-size: 24px;
     }
-    
+
     .demo-text p {
         font-size: 16px;
     }
-    
+
     .demo-item {
         margin-bottom: 80px;
     }
@@ -1411,29 +1445,29 @@ body {
     .nav-container {
         padding: 0 15px;
     }
-    
+
     .hero-content {
         padding: 0 15px;
     }
-    
+
     .title-divider {
         display: block;
         margin: 10px 0;
     }
-    
+
     .btn-primary,
     .btn-secondary {
         width: 100%;
         justify-content: center;
         padding: 14px 24px;
     }
-    
+
     .demo-interface,
     .contract-review,
     .document-generator {
         height: 350px;
     }
-    
+
     .demo-container {
         padding: 0 15px;
     }

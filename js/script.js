@@ -1,5 +1,5 @@
 // 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeNavigation();
     initializeVideoBackground();
     initializeScrollEffects();
@@ -14,21 +14,21 @@ const totalPages = 6;
 
 function initializePageNavigation() {
     const indicators = document.querySelectorAll('.indicator');
-    
+
     // 初始化视频播放设置
     const bgVideo = document.querySelector('.bg_video video');
     const page2Video = document.querySelector('.bg_video_page2 video');
     const page3Video = document.querySelector('.bg_video_page3 video');
     const page4Video = document.querySelector('.bg_video_page4 video');
     const page5Video = document.querySelector('.bg_video_page5 video');
-    
+
     if (bgVideo) {
         bgVideo.loop = false; // 不循环播放
         bgVideo.addEventListener('ended', () => {
             console.log('第一页视频播放结束，停留在最后一帧');
         });
     }
-    
+
     if (page2Video) {
         page2Video.pause(); // 初始暂停第二页视频
         page2Video.loop = false; // 不循环播放
@@ -36,7 +36,7 @@ function initializePageNavigation() {
             console.log('第二页视频播放结束，停留在最后一帧');
         });
     }
-    
+
     if (page3Video) {
         page3Video.pause(); // 初始暂停第三页视频
         page3Video.loop = false; // 不循环播放
@@ -44,7 +44,7 @@ function initializePageNavigation() {
             console.log('第三页视频播放结束，停留在最后一帧');
         });
     }
-    
+
     if (page4Video) {
         page4Video.pause(); // 初始暂停第四页视频
         page4Video.loop = false; // 不循环播放
@@ -52,7 +52,7 @@ function initializePageNavigation() {
             console.log('第四页视频播放结束，停留在最后一帧');
         });
     }
-    
+
     if (page5Video) {
         page5Video.pause(); // 初始暂停第五页视频
         page5Video.loop = false; // 不循环播放
@@ -60,13 +60,13 @@ function initializePageNavigation() {
             console.log('第五页视频播放结束，停留在最后一帧');
         });
     }
-    
+
     // 滚轮事件监听
     document.addEventListener('wheel', handleWheel, { passive: false });
-    
+
     // 键盘事件监听
     document.addEventListener('keydown', handleKeydown);
-    
+
     // 指示器点击事件
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
@@ -75,18 +75,18 @@ function initializePageNavigation() {
             }
         });
     });
-    
+
     // 触摸事件支持（移动端）
     initializeTouchNavigation();
 }
 
 function handleWheel(e) {
     e.preventDefault();
-    
+
     if (isScrolling) return;
-    
+
     const delta = e.deltaY;
-    
+
     if (delta > 0 && currentPage < totalPages - 1) {
         // 向下滚动，下一页
         goToPage(currentPage + 1);
@@ -98,8 +98,8 @@ function handleWheel(e) {
 
 function handleKeydown(e) {
     if (isScrolling) return;
-    
-    switch(e.key) {
+
+    switch (e.key) {
         case 'ArrowDown':
         case 'PageDown':
         case ' ': // 空格键
@@ -128,7 +128,7 @@ function handleKeydown(e) {
 
 function goToPage(pageIndex) {
     if (isScrolling || pageIndex === currentPage) return;
-    
+
     isScrolling = true;
     const partZero = document.querySelector('.part-zero');
     const partOne = document.querySelector('.part-one');
@@ -137,17 +137,17 @@ function goToPage(pageIndex) {
     const partFour = document.querySelector('.part-four');
     const partFive = document.querySelector('.part-five');
     const indicators = document.querySelectorAll('.indicator');
-    
+
     // 检查页面元素是否存在
     if (!partZero || !partOne || !partTwo || !partThree || !partFour || !partFive) {
         console.error('找不到页面元素！');
         isScrolling = false;
         return;
     }
-    
+
     // 更新当前页
     currentPage = pageIndex;
-    
+
     // 全屏滚动切换：每次只显示一个页面
     // 重置所有页面状态
     partZero.classList.remove('hide');
@@ -156,7 +156,7 @@ function goToPage(pageIndex) {
     partThree.classList.remove('active');
     partFour.classList.remove('active');
     partFive.classList.remove('active');
-    
+
     // 根据当前页面显示对应的页面
     if (currentPage === 0) {
         // 显示第1页，隐藏其他页面
@@ -176,15 +176,15 @@ function goToPage(pageIndex) {
         partZero.classList.add('hide');
         partFive.classList.add('active');
     }
-    
+
     // 更新指示器状态
     indicators.forEach((indicator, index) => {
         indicator.classList.toggle('active', index === currentPage);
     });
-    
+
     // 视频管理
     managePageVideos();
-    
+
     // 重置滚动锁定
     setTimeout(() => {
         isScrolling = false;
@@ -197,14 +197,14 @@ function managePageVideos() {
     const page3Video = document.querySelector('.bg_video_page3 video');
     const page4Video = document.querySelector('.bg_video_page4 video');
     const page5Video = document.querySelector('.bg_video_page5 video');
-    
+
     // 先暂停所有视频，避免冲突
     if (bgVideo) bgVideo.pause();
     if (page2Video) page2Video.pause();
     if (page3Video) page3Video.pause();
     if (page4Video) page4Video.pause();
     if (page5Video) page5Video.pause();
-    
+
     // 立即播放对应视频
     if (currentPage === 0) {
         // 第一页 - 播放第一页视频
@@ -254,17 +254,17 @@ function initializeTouchNavigation() {
     let startY = 0;
     let endY = 0;
     const minSwipeDistance = 50;
-    
+
     document.addEventListener('touchstart', (e) => {
         startY = e.touches[0].clientY;
     }, { passive: true });
-    
+
     document.addEventListener('touchend', (e) => {
         if (isScrolling) return;
-        
+
         endY = e.changedTouches[0].clientY;
         const diff = startY - endY;
-        
+
         if (Math.abs(diff) > minSwipeDistance) {
             if (diff > 0 && currentPage < totalPages - 1) {
                 // 向上滑动，下一页
@@ -280,11 +280,11 @@ function initializeTouchNavigation() {
 // 导航栏滚动效果
 function initializeNavigation() {
     const nav = document.querySelector('.commonHeader');
-    
+
     if (nav) {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            
+
             if (scrolled > 50) {
                 nav.classList.add('scrolled');
             } else {
@@ -309,34 +309,34 @@ function initializeNavigation() {
     });
 }
 
-// 视频背景初始化（在2.5秒显示文字，播放完成后停留在最后一帧作为背景）
+// 视频背景初始化（在1秒显示文字，播放完成后停留在最后一帧作为背景）
 function initializeVideoBackground() {
     const video = document.querySelector('.bg_video video');
     const mainUI = document.querySelector('.main-ui');
-    
+
     if (video && mainUI) {
         // 设置初始透明度
         mainUI.style.opacity = '0';
-        
-        // 监听视频时间更新，在2.5秒显示文字
+
+        // 监听视频时间更新，在1秒显示文字
         video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= 2.5 && mainUI.style.opacity === '0') {
+            if (video.currentTime >= 1 && mainUI.style.opacity === '0') {
                 mainUI.style.opacity = '1';
             }
         });
-        
+
         // 视频播放结束后的处理
         video.addEventListener('ended', () => {
             // 停留在最后一帧
             video.currentTime = video.duration;
             video.pause(); // 确保视频暂停在最后一帧
-            
+
             // 确保文字内容已显示
             if (mainUI.style.opacity === '0') {
                 mainUI.style.opacity = '1';
             }
         });
-        
+
         // 确保视频可以自动播放
         video.play().catch(error => {
             console.log('视频自动播放失败:', error);
@@ -362,8 +362,8 @@ function initializeVideoBackground() {
 
         // 如果视频很短，设置最小等待时间
         video.addEventListener('loadedmetadata', () => {
-            if (video.duration < 2.5) {
-                // 如果视频少于2.5秒，等待视频播放完后再显示文字
+            if (video.duration < 1) {
+                // 如果视频少于1秒，等待视频播放完后再显示文字
                 setTimeout(() => {
                     if (mainUI.style.opacity === '0') {
                         mainUI.style.opacity = '1';
@@ -393,16 +393,16 @@ function showVideoPlayButton() {
         backdrop-filter: blur(10px);
         z-index: 20;
     `;
-    
+
     playBtn.addEventListener('click', () => {
         const video = document.querySelector('.bg_video video');
         video.play().then(() => {
             playBtn.remove();
         });
     });
-    
+
     document.querySelector('.part-zero').appendChild(playBtn);
-    
+
     // 如果用户点击播放按钮，也要显示文字
     playBtn.addEventListener('click', () => {
         setTimeout(() => {
@@ -416,7 +416,7 @@ function showFallbackImage() {
     const videoElement = document.querySelector('.bg_video video');
     const bgVideo = document.querySelector('.bg_video');
     const mainUI = document.querySelector('.main-ui');
-    
+
     // 创建备用背景
     const fallbackDiv = document.createElement('div');
     fallbackDiv.style.cssText = `
@@ -429,10 +429,10 @@ function showFallbackImage() {
         background-size: cover;
         background-position: center;
     `;
-    
+
     bgVideo.appendChild(fallbackDiv);
     videoElement.style.display = 'none';
-    
+
     // 显示文字内容
     mainUI.style.opacity = '1';
 }
@@ -441,7 +441,7 @@ function showFallbackImage() {
 function initializeScrollEffects() {
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        
+
         // 主内容轻微视差效果
         const heroContent = document.querySelector('.main-ui');
         if (heroContent && scrolled < window.innerHeight) {
@@ -456,9 +456,9 @@ function initializeVideoModal() {
     const videoPlayBtn = document.querySelector('.video-play-btn');
     const closeBtn = document.querySelector('.videoClose');
     const demoVideo = modal ? modal.querySelector('video') : null;
-    
+
     console.log('Video modal elements found');
-    
+
     // 打开弹窗
     if (videoPlayBtn) {
         videoPlayBtn.addEventListener('click', () => {
@@ -477,7 +477,7 @@ function initializeVideoModal() {
     } else {
         console.log('Video play button not found');
     }
-    
+
     // 关闭弹窗
     function closeModal() {
         modal.style.display = 'none';
@@ -487,11 +487,11 @@ function initializeVideoModal() {
             demoVideo.currentTime = 0;
         }
     }
-    
+
     if (closeBtn) {
         closeBtn.addEventListener('click', closeModal);
     }
-    
+
     // 点击背景关闭
     if (modal) {
         modal.addEventListener('click', (e) => {
@@ -500,7 +500,7 @@ function initializeVideoModal() {
             }
         });
     }
-    
+
     // ESC键关闭
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal && modal.style.display === 'block') {
@@ -517,7 +517,7 @@ function createRippleEffect(event, element) {
     const size = Math.max(rect.width, rect.height);
     const x = event.clientX - rect.left - size / 2;
     const y = event.clientY - rect.top - size / 2;
-    
+
     ripple.style.cssText = `
         position: absolute;
         width: ${size}px;
@@ -530,9 +530,9 @@ function createRippleEffect(event, element) {
         animation: ripple 0.6s linear;
         pointer-events: none;
     `;
-    
+
     element.appendChild(ripple);
-    
+
     setTimeout(() => {
         ripple.remove();
     }, 600);
@@ -540,7 +540,7 @@ function createRippleEffect(event, element) {
 
 // 为按钮添加涟漪效果
 document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('btn-primary') || 
+    if (e.target.classList.contains('btn-primary') ||
         e.target.classList.contains('btn-secondary')) {
         const button = e.target;
         if (getComputedStyle(button).position === 'static') {
@@ -590,6 +590,3 @@ rippleStyle.textContent = `
     }
 `;
 document.head.appendChild(rippleStyle);
-
-
-// 初始化
