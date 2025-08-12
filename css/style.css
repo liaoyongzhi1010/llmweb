@@ -1135,55 +1135,69 @@ body {
     background: rgba(7, 193, 96, 0.1);
 }
 
-/* 微信二维码悬停提示框 */
+/* 调整微信二维码背景尺寸 - 替换原有样式 */
 .wechat-qr-tooltip {
     position: absolute;
-    top: calc(100% + 10px);
+    bottom: calc(100% + 15px);
     left: 50%;
     transform: translateX(-50%);
     background: white;
-    border-radius: 12px;
+    border-radius: 8px;  /* 从12px减少到8px */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    padding: 12px;
+    padding: 12px;  /* 从20px减少到12px */
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
-    z-index: 1000;
+    z-index: 9999;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    
+    /* 调整容器尺寸 */
+    min-width: auto;  /* 改为auto，不强制最小宽度 */
+    width: 144px;  /* 固定宽度：120px图片 + 12px*2 padding */
+    overflow: visible;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .wechat-qr-tooltip::before {
     content: '';
     position: absolute;
-    bottom: 100%;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-bottom-color: white;
-    filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
+    border: 6px solid transparent;  /* 保持箭头大小 */
+    border-top-color: white;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
 }
 
 .wechat-icon:hover .wechat-qr-tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(5px);
+    transform: translateX(-50%) translateY(-5px);
+    pointer-events: auto;
 }
 
 .wechat-qr-tooltip img {
-    display: block;
-    width: 120px;
-    height: 120px;
-    border-radius: 8px;
-    margin-bottom: 8px;
+    display: block !important;
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: contain !important;
+    border-radius: 6px;  /* 从8px减少到6px */
+    margin: 0 auto 8px auto !important;  /* 底部间距从10px减少到8px */
+    max-width: none !important;
+    max-height: none !important;
+    border: none;
 }
 
 .tooltip-text {
     text-align: center;
-    font-size: 12px;
+    font-size: 12px;  /* 稍微减小字体 */
     color: var(--text-muted);
     font-weight: 500;
+    margin: 0;
     white-space: nowrap;
+    line-height: 1.2;  /* 减少行高 */
 }
 
 /* 右侧链接网格 - 更紧凑 */
