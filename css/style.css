@@ -774,26 +774,6 @@ body {
     pointer-events: auto;
 }
 
-.HomeApp .part-three .title {
-    margin-right: 26vw;
-    /* 增大右边距，把标题往左移 */
-    align-self: flex-end;
-    text-align: left;
-    max-width: 400px;
-    line-height: 1.2;
-    white-space: nowrap;
-}
-
-.HomeApp .part-three .subtitle {
-    margin-right: 18.5vw;
-    /* 增大右边距，把副标题也往左移 */
-    align-self: flex-end;
-    text-align: left;
-    max-width: 600px;
-    /* 再增大宽度让副标题显示为两行 */
-    line-height: 1.5;
-}
-
 /* 第五页样式 */
 .HomeApp .part-four {
     position: fixed;
